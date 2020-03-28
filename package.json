@@ -1,16 +1,13 @@
 {
   "name": "bitcoin-rpc",
+  "version": "0.1.0",
+  "private": true,
   "description": "Bitcoin Client Library to connect to Bitcoin Core via RPC",
-  "version": "0.8.1",
   "author": {
     "name": "Aleksandr Ivannikov",
     "email": "dev@an-ivannikov.com",
     "url": "https://an-ivannikov.com"
   },
-  "keywords": [
-    "bitcoin",
-    "rpc"
-  ],
   "license": "MIT",
   "main": "lib/index.js",
   "scripts": {
@@ -34,6 +31,10 @@
     "url": "https://github.com/an-ivannikov-dev/bitcoin-rpc/issues",
     "email": "dev@an-ivannikov.com"
   },
+  "keywords": [
+    "bitcoin",
+    "rpc"
+  ],
   "contributors": [
     {
       "name": "Aleksandr Ivannikov",
