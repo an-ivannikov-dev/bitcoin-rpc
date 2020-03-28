@@ -22,13 +22,13 @@
     "mocha": "^2.1.0",
     "sinon": "^1.12.2"
   },
-  "homepage": "https://github.com/an-ivannikov-dev/bitcoin-rpc#readme",
+  "homepage": "https://github.com/an-ivannikov-dev/bitcoin-rpc-js#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/an-ivannikov-dev/bitcoin-rpc.git"
+    "url": "https://github.com/an-ivannikov-dev/bitcoin-rpc-js.git"
   },
   "bugs": {
-    "url": "https://github.com/an-ivannikov-dev/bitcoin-rpc/issues",
+    "url": "https://github.com/an-ivannikov-dev/bitcoin-rpc-js/issues",
     "email": "dev@an-ivannikov.com"
   },
   "keywords": [
