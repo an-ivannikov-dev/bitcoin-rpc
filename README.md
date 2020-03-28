@@ -16,7 +16,7 @@ yarn add https://github.com/an-ivannikov-dev/bitcoin-rpc-js.git
 ```javascript
 var run = function() {
   var bitcore = require('bitcore');
-  var RpcClient = require('bitcoin-rpc-js');
+  var RpcClient = require('bitcoin-rpc');
 
   const config = {
     protocol: 'http',
