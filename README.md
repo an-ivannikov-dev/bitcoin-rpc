@@ -8,7 +8,7 @@ bitcoin-rpc runs on [node](http://nodejs.org/),
 and can be installed via [yarn](https://yarnpkg.com/):
 
 ```bash
-yarn add https://github.com/an-ivannikov-dev/bitcoin-rpc.git
+yarn add https://github.com/an-ivannikov-dev/bitcoin-rpc-js.git
 ```
 
 ## Examples
@@ -16,7 +16,7 @@ yarn add https://github.com/an-ivannikov-dev/bitcoin-rpc.git
 ```javascript
 var run = function() {
   var bitcore = require('bitcore');
-  var RpcClient = require('bitcoin-rpc');
+  var RpcClient = require('bitcoin-rpc-js');
 
   const config = {
     protocol: 'http',
