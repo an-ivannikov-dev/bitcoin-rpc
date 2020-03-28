@@ -1,14 +1,18 @@
-# bitcoin-rpc
+bitcoind-rpc.js
+===============
+
+[![NPM Package](https://img.shields.io/npm/v/bitcoind-rpc.svg?style=flat-square)](https://www.npmjs.org/package/bitcoind-rpc)
+[![Build Status](https://img.shields.io/travis/bitpay/bitcoind-rpc.svg?branch=master&style=flat-square)](https://travis-ci.org/bitpay/bitcoind-rpc)
+[![Coverage Status](https://img.shields.io/coveralls/bitpay/bitcoind-rpc.svg?style=flat-square)](https://coveralls.io/r/bitpay/bitcoind-rpc?branch=master)
 
 A client library to connect to Bitcoin Core RPC in JavaScript.
 
 ## Get Started
 
-bitcoin-rpc runs on [node](http://nodejs.org/), 
-and can be installed via [yarn](https://yarnpkg.com/):
+bitcoind-rpc.js runs on [node](http://nodejs.org/), and can be installed via [npm](https://npmjs.org/):
 
 ```bash
-yarn add https://github.com/an-ivannikov-dev/bitcoin-rpc.git
+npm install bitcoind-rpc
 ```
 
 ## Examples
@@ -16,20 +20,18 @@ yarn add https://github.com/an-ivannikov-dev/bitcoin-rpc.git
 ```javascript
 var run = function() {
   var bitcore = require('bitcore');
-  var RpcClient = require('bitcoin-rpc');
+  var RpcClient = require('bitcoind-rpc');
 
-  const config = {
+  var config = {
     protocol: 'http',
-    user: 'rpcuser',
-    pass: 'rpcpassword',
+    user: 'user',
+    pass: 'pass',
     host: '127.0.0.1',
-    port: '18443', // default: 8333, testnet: 18333, regtest: 18443)
-    pathname: '/', // /wallet/<walletname>
+    port: '18332',
   };
 
   // config can also be an url, e.g.:
-  // const config = 'http://user:pass@127.0.0.1:18443';
-  // const config = 'http://user:pass@127.0.0.1:18443/wallet/<walletname>';
+  // var config = 'http://user:pass@127.0.0.1:18332';
 
   var rpc = new RpcClient(config);
 
@@ -73,4 +75,6 @@ var run = function() {
 
 ## License
 
-**[the BitPay, Inc. MIT license](https://github.com/bitpay/bitcore/blob/master/LICENSE).**
+**Code released under [the MIT license](https://github.com/bitpay/bitcore/blob/master/LICENSE).**
+
+Copyright 2013-2018 BitPay, Inc.

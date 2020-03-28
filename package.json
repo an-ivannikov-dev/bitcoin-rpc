@@ -1,12 +1,49 @@
 {
-  "name": "bitcoind-rpc",
+  "name": "bitcoin-rpc",
   "description": "Bitcoin Client Library to connect to Bitcoin Core via RPC",
   "version": "0.8.1",
   "author": {
-    "name": "Stephen Pair",
-    "email": "stephen@bitpay.com"
+    "name": "Aleksandr Ivannikov",
+    "email": "dev@an-ivannikov.com",
+    "url": "https://an-ivannikov.com"
+  },
+  "keywords": [
+    "bitcoin",
+    "rpc"
+  ],
+  "license": "MIT",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "node_modules/.bin/mocha test -R spec",
+    "coverage": "node_modules/.bin/istanbul cover node_modules/.bin/_mocha -- --recursive"
+  },
+  "devDependencies": {
+    "async": "^0.9.0",
+    "chai": "^1.10.0",
+    "coveralls": "^2.11.2",
+    "istanbul": "^0.4.5",
+    "mocha": "^2.1.0",
+    "sinon": "^1.12.2"
+  },
+  "homepage": "https://github.com/an-ivannikov-dev/bitcoin-rpc#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/an-ivannikov-dev/bitcoin-rpc.git"
+  },
+  "bugs": {
+    "url": "https://github.com/an-ivannikov-dev/bitcoin-rpc/issues",
+    "email": "dev@an-ivannikov.com"
   },
   "contributors": [
+    {
+      "name": "Aleksandr Ivannikov",
+      "email": "dev@an-ivannikov.com",
+      "url": "https://an-ivannikov.com"
+    },
+    {
+      "name": "Stephen Pair",
+      "email": "stephen@bitpay.com"
+    },
     {
       "name": "Jeff Garzik",
       "email": "jgarzik@bitpay.com"
@@ -23,31 +60,5 @@
       "name": "Braydon Fuller",
       "email": "braydon@bitpay.com"
     }
-  ],
-  "keywords": [
-    "bitcoin",
-    "rpc"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/bitpay/bitcoind-rpc"
-  },
-  "license": "MIT",
-  "main": "lib/index.js",
-  "scripts": {
-    "test": "node_modules/.bin/mocha test -R spec",
-    "coverage": "node_modules/.bin/istanbul cover node_modules/.bin/_mocha -- --recursive"
-  },
-  "devDependencies": {
-    "async": "^0.9.0",
-    "chai": "^1.10.0",
-    "coveralls": "^2.11.2",
-    "istanbul": "^0.4.5",
-    "mocha": "^2.1.0",
-    "sinon": "^1.12.2"
-  },
-  "bugs": {
-    "url": "https://github.com/bitpay/bitcoind-rpc/issues"
-  },
-  "homepage": "https://github.com/bitpay/bitcoind-rpc"
+  ]
 }
