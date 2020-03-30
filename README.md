@@ -4,7 +4,7 @@ A client library to connect to Bitcoin Core RPC in JavaScript.
 
 ## Get Started
 
-bitcoin-rpc runs on [node](http://nodejs.org/), 
+bitcoin-rpc-js runs on [node](http://nodejs.org/), 
 and can be installed via [yarn](https://yarnpkg.com/):
 
 ```bash
