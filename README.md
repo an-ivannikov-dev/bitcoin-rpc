@@ -42,30 +42,14 @@ const config = {
 
 const rpc = new RpcClient(config);
 
-const run = () => {
-  rpc.createBatch()
-    .getBlockCount()
-    .getBlockchainInfo()
-    .getZmqNotifications()
-    .call()
-    .then((result) => console.log('Batch call 1. result:', result))
-    .catch((error) => console.error('Batch call 1. error:', error));
-
-  rpc.createBatch()
-    .getBlockCount()
-    .getBlockchainInfo()
-    .getZmqNotifications()
-    .call((error, result) => console.log('Batch call 2:', error, result));
-
-  rpc
-    .getBlockCount()
+const run = async function () {
+  rpc.getBlockCount()
     .then((count) => rpc.getBlockHash(count))
     .then((hash) => rpc.getBlockHeader(hash))
     .then((result) => console.log('Chained calls 1. last block header:', result))
     .catch((error) => console.error('Chained calls 1. error:', error));
 
-  rpc
-    .getBlockCount()
+  rpc.getBlockCount()
     .then((count) => rpc.getBlockHash(count))
     .then((hash) => rpc.getBlock(hash))
     .then((block) => {
@@ -75,11 +59,24 @@ const run = () => {
           rpc.getRawTransaction(txid, verbose, block.hash);
         });
       }
-
       return rpc.batch(batchCall);
     })
     .then((response) => console.log('chained calls 2. array:', JSON.stringify(response, null, 2)))
     .catch((error) => console.log('chained calls 2. error:', error));
+
+  rpc.createBatch()
+    .getBlockCount()
+    .getBlockchainInfo()
+    .getZmqNotifications()
+    .call((error, response) => console.log('Batch call 1:', error, response));
+
+  rpc.createBatch()
+    .getBlockCount()
+    .getBlockchainInfo()
+    .getZmqNotifications()
+    .call()
+    .then((response) => console.log('Batch call 2. response:', JSON.stringify(response, null, 2)))
+    .catch((error) => console.error('Batch call 2. error:', error));
 
 
   let txids = [];
