@@ -16,6 +16,14 @@ Added Promise.
 ## Examples
 
 ```js
+callback(response.error, response.result, response);
+resolve(response.result, response);
+reject(response.error || error, response);
+// batch -> response;
+const { error, result, id, } = response;
+```
+
+```js
 const bitcore = require('bitcore');
 const RpcClient = require('bitcoin-rpc-js');
 
@@ -36,25 +44,42 @@ const rpc = new RpcClient(config);
 
 const run = () => {
   rpc.createBatch()
+    .getBlockCount()
     .getBlockchainInfo()
     .getZmqNotifications()
-    .getBlockCount()
     .call()
-    .then((res) => console.log('Batch call. response:', res))
-    .catch((err) => console.error('Batch call. error:', err));
+    .then((result) => console.log('Batch call 1. result:', result))
+    .catch((error) => console.error('Batch call 1. error:', error));
 
   rpc.createBatch()
+    .getBlockCount()
     .getBlockchainInfo()
     .getZmqNotifications()
-    .getBlockCount()
-    .call((err, res) => console.log('Batch call 2:', err, res));
+    .call((error, result) => console.log('Batch call 2:', error, result));
 
   rpc
     .getBlockCount()
-    .then((res) => rpc.getBlockHash(res))
-    .then((res) => rpc.getBlockHeader(res))
-    .then((res) => console.log('Chained calls. last block header:', res))
-    .catch((err) => console.error('Chained calls. error:', err));
+    .then((count) => rpc.getBlockHash(count))
+    .then((hash) => rpc.getBlockHeader(hash))
+    .then((result) => console.log('Chained calls 1. last block header:', result))
+    .catch((error) => console.error('Chained calls 1. error:', error));
+
+  rpc
+    .getBlockCount()
+    .then((count) => rpc.getBlockHash(count))
+    .then((hash) => rpc.getBlock(hash))
+    .then((block) => {
+      function batchCall() {
+        block.tx.forEach((txid) => {
+          const verbose = true;
+          rpc.getRawTransaction(txid, verbose, block.hash);
+        });
+      }
+
+      return rpc.batch(batchCall);
+    })
+    .then((response) => console.log('chained calls 2. array:', JSON.stringify(response, null, 2)))
+    .catch((error) => console.log('chained calls 2. error:', error));
 
 
   let txids = [];
@@ -67,7 +92,7 @@ const run = () => {
       }
 
       function batchCall() {
-        ret.result.forEach((txid) => {
+        ret.forEach((txid) => {
           if (txids.indexOf(txid) === -1) {
             rpc.getRawTransaction(txid);
           }
@@ -81,11 +106,11 @@ const run = () => {
         }
 
         rawtxs.map((rawtx) => {
-          const tx = new bitcore.Transaction(rawtx.result);
+          const tx = new bitcore.Transaction(rawtx);
           console.log('\n\n\n' + tx.id + ':', tx.toObject());
         });
 
-        txids = ret.result;
+        txids = ret;
         setTimeout(showNewTransactions, 2500);
       });
     });
