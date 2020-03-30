@@ -1,5 +1,5 @@
 {
-  "name": "bitcoin-rpc",
+  "name": "bitcoin-rpc-js",
   "version": "0.1.0",
   "private": true,
   "description": "Bitcoin Client Library to connect to Bitcoin Core via RPC",

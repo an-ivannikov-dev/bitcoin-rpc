@@ -1,4 +1,4 @@
-# bitcoin-rpc
+# bitcoin-rpc-js
 
 A client library to connect to Bitcoin Core RPC in JavaScript.
 
@@ -17,7 +17,7 @@ Added Promise.
 
 ```js
 const bitcore = require('bitcore');
-const RpcClient = require('bitcoin-rpc');
+const RpcClient = require('bitcoin-rpc-js');
 
 
 const config = {
