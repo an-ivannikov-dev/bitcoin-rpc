@@ -11,6 +11,8 @@ and can be installed via [yarn](https://yarnpkg.com/):
 yarn add https://github.com/an-ivannikov-dev/bitcoin-rpc-js.git
 ```
 
+Added Promise.
+
 ## Examples
 
 ```javascript
