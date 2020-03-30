@@ -61,7 +61,7 @@ const run = async function () {
       }
       return rpc.batch(batchCall);
     })
-    .then((response) => console.log('chained calls 2. array:', JSON.stringify(response, null, 2)))
+    .then((result) => console.log('chained calls 2. result:', JSON.stringify(result, null, 2)))
     .catch((error) => console.log('chained calls 2. error:', error));
 
   rpc.createBatch()
