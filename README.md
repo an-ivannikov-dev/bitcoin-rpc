@@ -15,7 +15,7 @@ Added Promise.
 
 ## Examples
 
-```javascript
+```js
 const bitcore = require('bitcore');
 const RpcClient = require('bitcoin-rpc');
 
