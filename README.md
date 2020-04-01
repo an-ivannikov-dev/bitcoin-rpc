@@ -42,7 +42,18 @@ const config = {
 
 const rpc = new RpcClient(config);
 
+async function getBlockCount() {
+  let count = -1;
+  try {
+    count = await rpc.getBlockCount();
+  } catch (error) { }
+  return count;
+}
+
 const run = async function () {
+  const blockCount = await getBlockCount();
+  console.log('getBlockCount =', blockCount);
+
   rpc.getBlockCount()
     .then((count) => rpc.getBlockHash(count))
     .then((hash) => rpc.getBlockHeader(hash))
