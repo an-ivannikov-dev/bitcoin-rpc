@@ -1,17 +1,48 @@
-# bitcoin-rpc-js
+# bitcoin-rpc
+**A client library to connect to Bitcoin Core RPC in Node.js.**
+> This library forked from [bitpay/bitcoind-rpc](https://github.com/bitpay/bitcoind-rpc), fixed and updated.
 
-A client library to connect to Bitcoin Core RPC in JavaScript.
+Supported promises and callbacks.
+
+**Supported Bitcoin Core versions:**
+  - v0.20.1.
+
 
 ## Get Started
 
-bitcoin-rpc-js runs on [node](http://nodejs.org/), 
-and can be installed via [yarn](https://yarnpkg.com/):
+### Installing
+`bitcoin-rpc` runs on [Node.js](http://nodejs.org/),
+and can be installed via [yarn](https://yarnpkg.com/)
+or [npm](https://www.npmjs.com/):
 
 ```bash
+# installed via yarn as git repo
 yarn add https://github.com/an-ivannikov-dev/bitcoin-rpc-js.git
+# installed via yarn
+yarn add bitcoin-rpc
+# installed via npm
+npm install bitcoin-rpc
 ```
 
-Added Promise.
+### Usage
+```js
+// Last version
+const RpcClient = require('bitcoin-rpc');
+// or specific version
+// const RpcClient = require('bitcoin-rpc/v0.20.1');
+
+
+const config = {
+  protocol: 'http',
+  user: 'rpcuser',
+  pass: 'rpcpassword',
+  host: '127.0.0.1',
+  port: '18443', // default: 8333, testnet: 18333, regtest: 18443)
+  pathname: '/', // /wallet/<walletname>
+};
+
+const rpc = new RpcClient(config);
+```
 
 ## Examples
 
@@ -25,7 +56,8 @@ const { error, result, id, } = response;
 
 ```js
 const bitcore = require('bitcore');
-const RpcClient = require('bitcoin-rpc-js');
+// const RpcClient = require('bitcoin-rpc/v0.20.1');
+const RpcClient = require('bitcoin-rpc');
 
 
 const config = {
@@ -36,9 +68,6 @@ const config = {
   port: '18443', // default: 8333, testnet: 18333, regtest: 18443)
   pathname: '/', // /wallet/<walletname>
 };
-// config can also be an url, e.g.:
-// const config = 'http://user:pass@127.0.0.1:18443';
-// const config = 'http://user:pass@127.0.0.1:18443/wallet/<walletname>';
 
 const rpc = new RpcClient(config);
 
